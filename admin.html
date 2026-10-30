@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Nidmegent Esports Admin Dashboard">
+  <title>NIDMEGENT | ADMIN PANEL</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="bg-effects">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="grid"></div>
+  </div>
+
+  <section id="loginScreen" class="login-screen">
+    <form id="loginForm" class="login-card">
+      <div class="brand">N</div>
+      <p class="eyebrow">NIDMEGENT ESPORTS</p>
+      <h1>ADMIN<span>PANEL</span></h1>
+      <p class="muted">Authorized personnel only.</p>
+
+      <label for="loginId">ADMIN ID</label>
+      <input id="loginId" autocomplete="username" required>
+
+      <label for="loginPassword">PASSWORD</label>
+      <input id="loginPassword" type="password" autocomplete="current-password" required>
+
+      <button class="primary" type="submit">ADMIN LOGIN <b>→</b></button>
+      <p id="loginMessage" class="message"></p>
+      <a class="back-link" href="index.html">← MEMBER DASHBOARD</a>
+    </form>
+  </section>
+
+  <section id="passwordScreen" class="login-screen hidden">
+    <form id="passwordForm" class="login-card">
+      <div class="brand">N</div>
+      <p class="eyebrow">ACCOUNT SECURITY</p>
+      <h1>CHANGE<span>PASSWORD</span></h1>
+      <p class="muted">初期パスワードを変更してください。</p>
+      <label for="newPassword">NEW PASSWORD（12文字以上）</label>
+      <input id="newPassword" type="password" minlength="12" required>
+      <label for="confirmPassword">CONFIRM PASSWORD</label>
+      <input id="confirmPassword" type="password" minlength="12" required>
+      <button class="primary" type="submit">UPDATE PASSWORD →</button>
+      <p id="passwordMessage" class="message"></p>
+    </form>
+  </section>
+
+  <div id="adminApp" class="admin-app hidden">
+    <aside class="sidebar">
+      <a class="side-brand" href="#">
+        <span class="brand small">N</span>
+        <span><strong>NIDMEGENT</strong><small>ADMIN CONSOLE</small></span>
+      </a>
+
+      <p class="side-label">MANAGEMENT</p>
+      <button class="nav active" data-page="overview">⌂ <span>OVERVIEW</span></button>
+      <button class="nav" data-page="members">◎ <span>MEMBERS</span></button>
+      <button class="nav" data-page="applications">↗ <span>APPLICATIONS</span></button>
+      <button class="nav" data-page="proposals">✳ <span>PROPOSALS</span></button>
+      <button class="nav" data-page="announcements">◇ <span>ANNOUNCEMENTS</span></button>
+      <button class="nav" data-page="settings">⚙ <span>SETTINGS</span></button>
+
+      <div class="side-bottom">
+        <div class="admin-status"><i></i> ADMIN SESSION ACTIVE</div>
+        <div id="adminName" class="admin-name">ADMIN</div>
+        <button id="logoutButton" class="logout">↪ LOGOUT</button>
+        <a class="member-link" href="index.html">MEMBER DASHBOARD ↗</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">NIDMEGENT ESPORTS / ADMINISTRATION</p>
+          <h2 id="pageTitle">OVERVIEW</h2>
+        </div>
+        <div class="top-user"><span class="admin-avatar">N</span><span id="topAdminName">ADMIN</span></div>
+      </header>
+
+      <section id="page-overview" class="page active">
+        <div class="page-intro">
+          <p class="eyebrow">CONTROL CENTER</p>
+          <h1>ADMIN<span>ISTRATION.</span></h1>
+          <p>チームの活動・メンバー・申請を管理します。</p>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>TOTAL MEMBERS</span><strong id="statMembers">—</strong><small>登録メンバー</small></article>
+          <article class="stat-card"><span>PENDING APPLICATIONS</span><strong id="statApplications">—</strong><small>大会出場申請</small></article>
+          <article class="stat-card"><span>PENDING PROPOSALS</span><strong id="statProposals">—</strong><small>企画提案</small></article>
+          <article class="stat-card"><span>ACTIVE MEMBERS</span><strong id="statActive">—</strong><small>有効アカウント</small></article>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">QUICK ACCESS</p><h3>MANAGEMENT MENU</h3></div></div>
+          <div class="shortcut-grid">
+            <button data-page="members">◎ <b>MEMBERS</b><small>メンバー管理</small></button>
+            <button data-page="applications">↗ <b>APPLICATIONS</b><small>大会出場申請</small></button>
+            <button data-page="proposals">✳ <b>PROPOSALS</b><small>企画提案</small></button>
+            <button data-page="announcements">◇ <b>ANNOUNCEMENTS</b><small>お知らせ管理</small></button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">SYSTEM</p><h3>ADMIN INFORMATION</h3></div></div>
+          <p class="muted">管理者セッションは一定時間で期限切れになります。操作できなくなった場合は再ログインしてください。</p>
+        </div>
+      </section>
+
+      <section id="page-members" class="page">
+        <div class="page-intro">
+          <p class="eyebrow">ACCOUNT MANAGEMENT</p>
+          <h1>MEMBERS<span>.</span></h1>
+          <p>メンバーアカウントの登録・編集・パスワード再設定。</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">NEW ACCOUNT</p><h3>REGISTER MEMBER</h3></div></div>
+          <form id="memberCreateForm" class="form-grid">
+            <div><label for="createMemberId">MEMBER ID *</label><input id="createMemberId" maxlength="60" required></div>
+            <div><label for="createDisplayName">DISPLAY NAME *</label><input id="createDisplayName" maxlength="100" required></div>
+            <div><label for="createDivision">DIVISION *</label>
+              <select id="createDivision" required>
+                <option value="">選択してください</option>
+                <option>LYXEN DIV</option><option>NOXIA DIV</option><option>OTHER</option>
+              </select>
+            </div>
+            <div><label for="createRole">ROLE</label><select id="createRole"><option value="MEMBER">MEMBER</option><option value="ADMIN">ADMIN</option></select></div>
+            <div class="full"><label for="createInitialPassword">INITIAL PASSWORD *（12文字以上）</label><input id="createInitialPassword" type="password" minlength="12" required></div>
+            <div class="full form-actions"><button class="primary" type="submit">CREATE ACCOUNT →</button></div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading responsive-heading">
+            <div><p class="eyebrow">ACCOUNT DIRECTORY</p><h3>MEMBER LIST</h3></div>
+            <button id="refreshMembers" class="secondary">↻ REFRESH</button>
+          </div>
+          <input id="memberSearch" class="search" placeholder="ID・名前・所属で検索...">
+          <div id="memberList" class="table-wrap"><p class="muted">読み込み待ち...</p></div>
+        </div>
+      </section>
+
+      <section id="page-applications" class="page">
+        <div class="page-intro"><p class="eyebrow">COMPETITION REPORTS</p><h1>APPLICATIONS<span>.</span></h1><p>大会・イベント出場申請を確認します。</p></div>
+        <div class="panel">
+          <div class="panel-heading responsive-heading"><div><p class="eyebrow">SUBMISSIONS</p><h3>APPLICATION LIST</h3></div><button id="refreshApplications" class="secondary">↻ REFRESH</button></div>
+          <div class="filter-row"><input id="applicationSearch" class="search" placeholder="名前・大会名で検索..."><select id="applicationFilter"><option value="">すべての状態</option><option value="PENDING">確認待ち</option><option value="REVIEWING">確認中</option><option value="APPROVED">承認</option><option value="REJECTED">差し戻し</option></select></div>
+          <div id="applicationList" class="record-list"><p class="muted">読み込み待ち...</p></div>
+        </div>
+      </section>
+
+      <section id="page-proposals" class="page">
+        <div class="page-intro"><p class="eyebrow">PROJECT IDEAS</p><h1>PROPOSALS<span>.</span></h1><p>メンバーから届いた企画・アイデアを確認します。</p></div>
+        <div class="panel">
+          <div class="panel-heading responsive-heading"><div><p class="eyebrow">SUBMISSIONS</p><h3>PROPOSAL LIST</h3></div><button id="refreshProposals" class="secondary">↻ REFRESH</button></div>
+          <div class="filter-row"><input id="proposalSearch" class="search" placeholder="名前・企画名で検索..."><select id="proposalFilter"><option value="">すべての状態</option><option value="PENDING">確認待ち</option><option value="REVIEWING">確認中</option><option value="APPROVED">承認</option><option value="REJECTED">差し戻し</option></select></div>
+          <div id="proposalList" class="record-list"><p class="muted">読み込み待ち...</p></div>
+        </div>
+      </section>
+
+      <section id="page-announcements" class="page">
+        <div class="page-intro"><p class="eyebrow">MEMBER INFORMATION</p><h1>ANNOUNCEMENTS<span>.</span></h1><p>メンバー画面のHOMEに表示するお知らせを管理します。</p></div>
+        <div class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">PUBLISH INFORMATION</p><h3 id="announcementFormTitle">CREATE ANNOUNCEMENT</h3></div></div>
+          <form id="announcementForm" class="form-grid">
+            <input id="announcementId" type="hidden">
+            <div class="full"><label for="announcementTitle">TITLE *</label><input id="announcementTitle" maxlength="150" required></div>
+            <div class="full"><label for="announcementContent">CONTENT *</label><textarea id="announcementContent" rows="5" maxlength="3000" required></textarea></div>
+            <div><label for="announcementStatus">PUBLISH STATUS</label><select id="announcementStatus"><option value="PUBLISHED">公開する</option><option value="DRAFT">下書き</option></select></div>
+            <div class="full form-actions"><button class="primary" type="submit">SAVE ANNOUNCEMENT →</button><button id="cancelAnnouncementEdit" class="secondary hidden" type="button">CANCEL EDIT</button></div>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">PUBLISHED / DRAFT</p><h3>ANNOUNCEMENT LIST</h3></div><button id="refreshAnnouncements" class="secondary">↻ REFRESH</button></div>
+          <div id="announcementList" class="record-list"><p class="muted">読み込み待ち...</p></div>
+        </div>
+      </section>
+
+      <section id="page-settings" class="page">
+        <div class="page-intro"><p class="eyebrow">PORTAL CONFIGURATION</p><h1>SETTINGS<span>.</span></h1><p>メンバー画面で利用するリンク・ポータル名を設定します。</p></div>
+        <div class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">PUBLIC SETTINGS</p><h3>PORTAL CONFIGURATION</h3></div></div>
+          <form id="settingsForm" class="form-grid">
+            <div class="full"><label for="settingPortalName">PORTAL NAME</label><input id="settingPortalName" maxlength="150"></div>
+            <div class="full"><label for="settingPremierUrl">PREMIER URL</label><input id="settingPremierUrl" type="url" placeholder="https://..."></div>
+            <div class="full"><label for="settingAnalystUrl">ANALYST URL</label><input id="settingAnalystUrl" type="url" placeholder="https://..."></div>
+            <div class="full form-actions"><button class="primary" type="submit">SAVE SETTINGS →</button></div>
+          </form>
+          <p class="hint">URLはHTTPS形式で入力してください。空欄にするとリンクを未設定にできます。</p>
+        </div>
+      </section>
+
+      <footer class="footer"><strong>NIDMEGENT ESPORTS</strong><span>ADMIN CONSOLE / AUTHORIZED ACCESS ONLY</span></footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <dialog id="memberDialog" class="dialog">
+    <form id="memberEditForm" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow">ACCOUNT EDIT</p><h3>EDIT MEMBER</h3></div><button type="button" class="close-dialog" data-close="memberDialog">×</button></div>
+      <input id="editMemberId" type="hidden">
+      <label for="editDisplayName">DISPLAY NAME</label><input id="editDisplayName" required maxlength="100">
+      <label for="editDivision">DIVISION</label><select id="editDivision"><option>LYXEN DIV</option><option>NOXIA DIV</option><option>OTHER</option></select>
+      <label for="editRole">ROLE</label><select id="editRole"><option value="MEMBER">MEMBER</option><option value="ADMIN">ADMIN</option></select>
+      <label for="editStatus">ACCOUNT STATUS</label><select id="editStatus"><option value="ACTIVE">ACTIVE</option><option value="SUSPENDED">SUSPENDED</option></select>
+      <button class="primary" type="submit">SAVE CHANGES →</button>
+    </form>
+  </dialog>
+
+  <dialog id="reviewDialog" class="dialog">
+    <form id="reviewForm" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow">APPLICATION REVIEW</p><h3>REVIEW SUBMISSION</h3></div><button type="button" class="close-dialog" data-close="reviewDialog">×</button></div>
+      <input id="reviewId" type="hidden"><input id="reviewType" type="hidden">
+      <label for="reviewStatus">STATUS</label>
+      <select id="reviewStatus"><option value="PENDING">確認待ち</option><option value="REVIEWING">確認中</option><option value="APPROVED">承認</option><option value="REJECTED">差し戻し</option></select>
+      <label for="reviewComment">ADMIN COMMENT</label><textarea id="reviewComment" rows="4" maxlength="2000" placeholder="メンバーへのコメント（任意）"></textarea>
+      <button class="primary" type="submit">SAVE REVIEW →</button>
+    </form>
+  </dialog>
+
+  <script src="admin.js"></script>
+</body>
+</html>

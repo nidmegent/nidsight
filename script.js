@@ -167,19 +167,36 @@ function renderProfile(member) {
   const role = member.role || "MEMBER";
   const id = member.memberId || "-";
 
+  // ヘッダー
   $("#headerMemberName").textContent = name;
   $("#headerDivision").textContent = division;
 
+  // MY PAGE
   $("#profileName").textContent = name;
   $("#profileDivision").textContent = division;
   $("#profileDivisionDetail").textContent = division;
   $("#profileRole").textContent = role;
   $("#profileId").textContent = id;
 
+  // アバター
   const initial = name.trim().charAt(0).toUpperCase() || "N";
 
   $("#profileAvatar").textContent = initial;
   $(".user-avatar").textContent = initial;
+
+  // ADMIN PAGE：管理者のみ表示
+  const isAdmin = String(role).trim().toUpperCase() === "ADMIN";
+
+  const adminPageNav = $("#adminPageNav");
+  const adminPageMobileNav = $("#adminPageMobileNav");
+
+  if (adminPageNav) {
+    adminPageNav.style.display = isAdmin ? "flex" : "none";
+  }
+
+  if (adminPageMobileNav) {
+    adminPageMobileNav.style.display = isAdmin ? "flex" : "none";
+  }
 }
 
 

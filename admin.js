@@ -606,19 +606,19 @@ $("#reviewForm").addEventListener("submit", async event => {
 ===================================================== */
 
 async function loadAnnouncements() {
-  /*
-   * 公開中のお知らせはgetDashboardから取得できる。
-   * 下書き・削除済みを含む管理一覧取得APIは未実装のため、
-   * この画面では公開中のお知らせを表示する。
-   */
-  $("#announcementList").innerHTML = '<p class="muted">読み込み中...</p>';
+  $("#announcementList").innerHTML =
+    '<p class="muted">読み込み中...</p>';
 
   try {
-    const result = await apiRequest("getDashboard");
+    const result = await apiRequest("adminListAnnouncements");
+
     state.announcements = result.announcements || [];
+
     renderAnnouncements();
+
   } catch (error) {
-    $("#announcementList").innerHTML = `<p class="empty">${escapeHTML(error.message)}</p>`;
+    $("#announcementList").innerHTML =
+      `<p class="empty">${escapeHTML(error.message)}</p>`;
   }
 }
 

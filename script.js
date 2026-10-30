@@ -435,8 +435,8 @@ $("#initialPasswordForm").addEventListener("submit", async event => {
   const password = $("#initialNewPassword").value;
   const confirmation = $("#initialConfirmPassword").value;
 
-  if (password.length < 12) {
-    showMessage(message, "パスワードは12文字以上にしてください。", "error");
+  if (password.length < 8) {
+    showMessage(message, "パスワードは8文字以上にしてください。", "error");
     return;
   }
 

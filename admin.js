@@ -410,13 +410,13 @@ $("#memberEditForm").addEventListener("submit", async event => {
 
 async function resetMemberPassword(memberId) {
   const newPassword = prompt(
-    `${memberId} の新しい初期パスワードを入力してください。\n12文字以上で設定してください。`
+    `${memberId} の新しい初期パスワードを入力してください。\n8文字以上で設定してください。`
   );
 
   if (newPassword === null) return;
 
-  if (newPassword.length < 12) {
-    toast("パスワードは12文字以上にしてください。");
+  if (newPassword.length < 8) {
+    toast("パスワードは8文字以上にしてください。");
     return;
   }
 

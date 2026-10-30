@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Nidmegent Esports Member Dashboard">
+  <title>NIDMEGENT | MEMBER DASHBOARD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- 背景エフェクト -->
+  <div class="background-effects">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- ログイン画面 -->
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card">
+
+      <div class="brand-symbol">N</div>
+
+      <p class="eyebrow">NIDMEGENT ESPORTS</p>
+      <h1>MEMBER<span>DASHBOARD</span></h1>
+
+      <p class="login-description">
+        Your team. Your mission.<br>
+        Welcome to the member portal.
+      </p>
+
+      <form id="loginForm">
+
+        <label for="loginId">MEMBER ID</label>
+        <input
+          id="loginId"
+          type="text"
+          autocomplete="username"
+          placeholder="Enter your member ID"
+          required
+        >
+
+        <label for="loginPassword">PASSWORD</label>
+        <input
+          id="loginPassword"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Enter your password"
+          required
+        >
+
+        <button class="primary-button" type="submit">
+          <span>LOGIN</span>
+          <span>→</span>
+        </button>
+
+        <p id="loginMessage" class="message" aria-live="polite"></p>
+
+      </form>
+
+      <div class="login-footer">
+        OFFICIAL MEMBER PORTAL
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 初回パスワード変更 -->
+  <section id="passwordSetupScreen" class="login-screen hidden">
+    <div class="login-card">
+
+      <div class="brand-symbol">N</div>
+
+      <p class="eyebrow">ACCOUNT SECURITY</p>
+      <h1>CHANGE<span>PASSWORD</span></h1>
+
+      <p class="login-description">
+        初期パスワードを変更してください。
+      </p>
+
+      <form id="initialPasswordForm">
+
+        <label for="initialNewPassword">NEW PASSWORD</label>
+        <input
+          id="initialNewPassword"
+          type="password"
+          autocomplete="new-password"
+          minlength="12"
+          placeholder="12文字以上"
+          required
+        >
+
+        <label for="initialConfirmPassword">CONFIRM PASSWORD</label>
+        <input
+          id="initialConfirmPassword"
+          type="password"
+          autocomplete="new-password"
+          minlength="12"
+          placeholder="新しいパスワードを再入力"
+          required
+        >
+
+        <button class="primary-button" type="submit">
+          <span>CHANGE PASSWORD</span>
+          <span>→</span>
+        </button>
+
+        <p id="initialPasswordMessage" class="message" aria-live="polite"></p>
+
+      </form>
+
+    </div>
+  </section>
+
+
+  <!-- メインアプリ -->
+  <div id="app" class="app hidden">
+
+    <!-- サイドバー -->
+    <aside class="sidebar">
+
+      <a href="#" class="sidebar-brand" data-tab="home">
+        <span class="brand-symbol small">N</span>
+        <span>
+          <strong>NIDMEGENT</strong>
+          <small>MEMBER PORTAL</small>
+        </span>
+      </a>
+
+      <div class="sidebar-section">
+        <span class="sidebar-label">MAIN MENU</span>
+
+        <button class="nav-item active" data-tab="home">
+          <span class="nav-icon">⌂</span>
+          <span>HOME</span>
+        </button>
+
+        <button class="nav-item" data-tab="application">
+          <span class="nav-icon">＋</span>
+          <span>APPLICATION</span>
+        </button>
+
+        <button class="nav-item" data-tab="premier">
+          <span class="nav-icon">◈</span>
+          <span>PREMIER</span>
+        </button>
+
+        <button class="nav-item" data-tab="analyst">
+          <span class="nav-icon">▥</span>
+          <span>ANALYST</span>
+        </button>
+
+        <span class="sidebar-label account-label">ACCOUNT</span>
+
+        <button class="nav-item" data-tab="mypage">
+          <span class="nav-icon">◎</span>
+          <span>MY PAGE</span>
+        </button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          MEMBER PORTAL
+        </div>
+
+        <button id="logoutButton" class="logout-button">
+          ↪ LOGOUT
+        </button>
+      </div>
+
+    </aside>
+
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">NIDMEGENT ESPORTS / MEMBER AREA</p>
+          <h2 id="pageTitle">DASHBOARD</h2>
+        </div>
+
+        <div class="user-badge">
+          <span class="user-avatar">N</span>
+          <div>
+            <strong id="headerMemberName">MEMBER</strong>
+            <small id="headerDivision">MEMBER</small>
+          </div>
+        </div>
+      </header>
+
+
+      <!-- HOME -->
+      <section id="tab-home" class="tab-panel active">
+
+        <div class="hero-card">
+          <div class="hero-content">
+
+            <p class="eyebrow">WELCOME TO NIDMEGENT</p>
+
+            <h1>
+              PLAY YOUR GAME.<br>
+              <span>MAKE YOUR MARK.</span>
+            </h1>
+
+            <p>
+              楽しく、ときには本気で向き合える。<br>
+              Nidmegent Esportsの活動をここから始めよう。
+            </p>
+
+            <button class="primary-button hero-button" data-tab="application">
+              OPEN APPLICATION <span>→</span>
+            </button>
+
+          </div>
+
+          <div class="hero-decoration">
+            <span class="hero-n">N</span>
+            <span class="hero-line"></span>
+            <span class="hero-caption">NEVER GIVE UP.</span>
+          </div>
+        </div>
+
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">QUICK ACCESS</p>
+            <h3>QUICK MENU</h3>
+          </div>
+          <span class="section-number">01 / 04</span>
+        </div>
+
+
+        <div class="quick-grid">
+
+          <button class="quick-card" data-tab="application">
+            <span class="card-number">01</span>
+            <span class="quick-icon">＋</span>
+            <h4>APPLICATION</h4>
+            <p>大会出場申請・企画提案</p>
+            <span class="card-arrow">↗</span>
+          </button>
+
+          <button class="quick-card" data-tab="premier">
+            <span class="card-number">02</span>
+            <span class="quick-icon">◈</span>
+            <h4>PREMIER</h4>
+            <p>出場確認・参加アンケート</p>
+            <span class="card-arrow">↗</span>
+          </button>
+
+          <button class="quick-card" data-tab="analyst">
+            <span class="card-number">03</span>
+            <span class="quick-icon">▥</span>
+            <h4>ANALYST</h4>
+            <p>VALORANT戦績・分析ツール</p>
+            <span class="card-arrow">↗</span>
+          </button>
+
+          <button class="quick-card" data-tab="mypage">
+            <span class="card-number">04</span>
+            <span class="quick-icon">◎</span>
+            <h4>MY PAGE</h4>
+            <p>アカウント・セキュリティ</p>
+            <span class="card-arrow">↗</span>
+          </button>
+
+        </div>
+
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">LATEST INFORMATION</p>
+            <h3>ANNOUNCEMENTS</h3>
+          </div>
+        </div>
+
+        <div id="announcementList" class="announcement-list">
+          <div class="empty-state">
+            <span class="empty-icon">◇</span>
+            <p>お知らせを読み込んでいます...</p>
+          </div>
+        </div>
+
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR ACTIVITY</p>
+            <h3>RECENT APPLICATIONS</h3>
+          </div>
+
+          <button class="text-button" data-tab="application">
+            VIEW ALL ↗
+          </button>
+        </div>
+
+        <div id="recentApplications" class="application-list">
+          <div class="empty-state">
+            <p>申請情報を読み込んでいます...</p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- APPLICATION -->
+      <section id="tab-application" class="tab-panel">
+
+        <div class="page-intro">
+          <p class="eyebrow">ACTIVITY MANAGEMENT</p>
+          <h1>APPLICATION<span>.</span></h1>
+          <p>大会への出場報告や、新しい企画の提案はこちらから。</p>
+        </div>
+
+
+        <div class="application-type-grid">
+
+          <button class="application-type-card active" data-form="competition">
+            <span class="quick-icon">↗</span>
+            <h3>大会・イベント出場申請</h3>
+            <p>大会への出場実績やイベント参加を報告する。</p>
+            <span class="card-arrow">→</span>
+          </button>
+
+          <button class="application-type-card" data-form="proposal">
+            <span class="quick-icon">✳</span>
+            <h3>やってみたいこと申請</h3>
+            <p>新しい活動や企画、挑戦したいことを提案する。</p>
+            <span class="card-arrow">→</span>
+          </button>
+
+        </div>
+
+
+        <!-- 大会出場申請 -->
+        <div id="competitionFormPanel" class="form-panel">
+
+          <div class="form-panel-heading">
+            <p class="eyebrow">FORM / 01</p>
+            <h2>COMPETITION REPORT</h2>
+            <p>大会・イベントへの出場内容を入力してください。</p>
+          </div>
+
+          <form id="competitionForm" class="data-form">
+
+            <div class="form-grid">
+
+              <div class="form-field">
+                <label for="competitionName">大会・イベント名 <span>*</span></label>
+                <input id="competitionName" name="eventName" maxlength="150" required>
+              </div>
+
+              <div class="form-field">
+                <label for="competitionDate">出場日 <span>*</span></label>
+                <input id="competitionDate" name="eventDate" type="date" required>
+              </div>
+
+              <div class="form-field">
+                <label for="competitionDivision">所属部門 <span>*</span></label>
+                <select id="competitionDivision" name="division" required>
+                  <option value="">選択してください</option>
+                  <option value="LYXEN DIV">LYXEN DIV</option>
+                  <option value="NOXIA DIV">NOXIA DIV</option>
+                  <option value="OTHER">その他</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="competitionResult">大会結果</label>
+                <input
+                  id="competitionResult"
+                  name="result"
+                  maxlength="150"
+                  placeholder="例：ベスト8、予選通過"
+                >
+              </div>
+
+              <div class="form-field full-width">
+                <label for="competitionDetails">活動内容 <span>*</span></label>
+                <textarea
+                  id="competitionDetails"
+                  name="details"
+                  maxlength="3000"
+                  rows="5"
+                  placeholder="大会名、参加部門、活動内容など"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-field full-width">
+                <label for="competitionUrl">関連URL</label>
+                <input
+                  id="competitionUrl"
+                  name="url"
+                  type="url"
+                  maxlength="1000"
+                  placeholder="https://..."
+                >
+              </div>
+
+            </div>
+
+            <div class="form-actions">
+              <p>入力内容を確認してから送信してください。</p>
+              <button type="submit" class="primary-button">
+                SUBMIT REPORT <span>→</span>
+              </button>
+            </div>
+
+            <p class="message" id="competitionMessage" aria-live="polite"></p>
+
+          </form>
+
+        </div>
+
+
+        <!-- 企画提案 -->
+        <div id="proposalFormPanel" class="form-panel hidden">
+
+          <div class="form-panel-heading">
+            <p class="eyebrow">FORM / 02</p>
+            <h2>NEW PROJECT PROPOSAL</h2>
+            <p>やってみたいことや新しい企画を提案してください。</p>
+          </div>
+
+          <form id="proposalForm" class="data-form">
+
+            <div class="form-grid">
+
+              <div class="form-field full-width">
+                <label for="proposalTitle">企画名 <span>*</span></label>
+                <input
+                  id="proposalTitle"
+                  name="title"
+                  maxlength="150"
+                  placeholder="企画のタイトル"
+                  required
+                >
+              </div>
+
+              <div class="form-field">
+                <label for="proposalDivision">所属部門 <span>*</span></label>
+                <select id="proposalDivision" name="division" required>
+                  <option value="">選択してください</option>
+                  <option value="LYXEN DIV">LYXEN DIV</option>
+                  <option value="NOXIA DIV">NOXIA DIV</option>
+                  <option value="OTHER">その他</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="proposalCategory">カテゴリ <span>*</span></label>
+                <select id="proposalCategory" name="category" required>
+                  <option value="">選択してください</option>
+                  <option value="大会">大会</option>
+                  <option value="イベント">イベント</option>
+                  <option value="配信">配信</option>
+                  <option value="交流">交流</option>
+                  <option value="チーム活動">チーム活動</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+
+              <div class="form-field full-width">
+                <label for="proposalDetails">企画内容 <span>*</span></label>
+                <textarea
+                  id="proposalDetails"
+                  name="details"
+                  maxlength="3000"
+                  rows="5"
+                  placeholder="どんなことを実施したいですか？"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-field full-width">
+                <label for="proposalPurpose">実施目的 <span>*</span></label>
+                <textarea
+                  id="proposalPurpose"
+                  name="purpose"
+                  maxlength="2000"
+                  rows="3"
+                  placeholder="なぜ実施したいのかを教えてください。"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-field full-width">
+                <label for="proposalSupport">必要な協力</label>
+                <textarea
+                  id="proposalSupport"
+                  name="support"
+                  maxlength="2000"
+                  rows="3"
+                  placeholder="人員、機材、運営協力など"
+                ></textarea>
+              </div>
+
+            </div>
+
+            <div class="form-actions">
+              <p>あなたのアイデアをチームの活動につなげよう。</p>
+              <button type="submit" class="primary-button">
+                SUBMIT PROPOSAL <span>→</span>
+              </button>
+            </div>
+
+            <p class="message" id="proposalMessage" aria-live="polite"></p>
+
+          </form>
+
+        </div>
+
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">APPLICATION HISTORY</p>
+            <h3>YOUR SUBMISSIONS</h3>
+          </div>
+        </div>
+
+        <div id="applicationHistory" class="application-list">
+          <div class="empty-state">
+            <p>申請履歴を読み込んでいます...</p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- PREMIER -->
+      <section id="tab-premier" class="tab-panel">
+
+        <div class="page-intro">
+          <p class="eyebrow">COMPETITIVE DIVISION</p>
+          <h1>PREMIER<span>.</span></h1>
+          <p>VALORANT Premierに関する確認・参加回答はこちらから。</p>
+        </div>
+
+        <div class="feature-card premier-feature">
+
+          <div class="feature-tag">EXTERNAL SERVICE</div>
+
+          <div class="feature-icon">◈</div>
+
+          <p class="eyebrow">VALORANT / COMPETITIVE</p>
+          <h2>PREMIER<br>MANAGEMENT</h2>
+
+          <p>
+            Premierの参加確認やチーム活動に必要なアンケートにアクセスできます。
+          </p>
+
+          <a
+            class="primary-button link-button"
+            href="https://nidmegent.github.io/playerhub.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            OPEN PREMIER <span>↗</span>
+          </a>
+
+          <div class="feature-decoration">PREMIER</div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ANALYST -->
+      <section id="tab-analyst" class="tab-panel">
+
+        <div class="page-intro">
+          <p class="eyebrow">PERFORMANCE & DATA</p>
+          <h1>VALORANT ANALYST<span>.</span></h1>
+          <p>データに基づいた分析で、チームの成長をサポートする。</p>
+        </div>
+
+        <div class="feature-card analyst-feature">
+
+          <div class="feature-tag">IN DEVELOPMENT</div>
+
+          <div class="feature-icon">▥</div>
+
+          <p class="eyebrow">DATA / STRATEGY / PERFORMANCE</p>
+          <h2>ANALYZE.<br>IMPROVE.<br><span>WIN.</span></h2>
+
+          <p>
+            戦績・マップデータ・試合分析などを集約する専用サイトを準備中。
+          </p>
+
+          <button class="secondary-button" disabled>
+            COMING SOON
+          </button>
+
+          <div class="feature-decoration">ANALYST</div>
+
+        </div>
+
+      </section>
+
+
+      <!-- MY PAGE -->
+      <section id="tab-mypage" class="tab-panel">
+
+        <div class="page-intro">
+          <p class="eyebrow">ACCOUNT MANAGEMENT</p>
+          <h1>MY PAGE<span>.</span></h1>
+          <p>プロフィールやアカウントのセキュリティを管理する。</p>
+        </div>
+
+        <div class="profile-card">
+
+          <div class="profile-avatar" id="profileAvatar">N</div>
+
+          <div class="profile-information">
+            <p class="eyebrow">MEMBER PROFILE</p>
+            <h2 id="profileName">MEMBER</h2>
+            <p id="profileDivision">DIVISION</p>
+            <span class="role-badge" id="profileRole">MEMBER</span>
+          </div>
+
+        </div>
+
+
+        <div class="form-panel">
+
+          <div class="form-panel-heading">
+            <p class="eyebrow">PERSONAL INFORMATION</p>
+            <h2>ACCOUNT INFORMATION</h2>
+          </div>
+
+          <div class="profile-data-grid">
+
+            <div class="profile-data-item">
+              <span>MEMBER ID</span>
+              <strong id="profileId">-</strong>
+            </div>
+
+            <div class="profile-data-item">
+              <span>DIVISION</span>
+              <strong id="profileDivisionDetail">-</strong>
+            </div>
+
+            <div class="profile-data-item">
+              <span>ACCOUNT STATUS</span>
+              <strong class="status-active">ACTIVE</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-panel">
+
+          <div class="form-panel-heading">
+            <p class="eyebrow">SECURITY SETTINGS</p>
+            <h2>CHANGE PASSWORD</h2>
+            <p>アカウントの安全性を保つため、パスワードを適切に管理してください。</p>
+          </div>
+
+          <form id="changePasswordForm" class="data-form">
+
+            <div class="form-grid">
+
+              <div class="form-field full-width">
+                <label for="currentPassword">現在のパスワード <span>*</span></label>
+                <input
+                  id="currentPassword"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+                >
+              </div>
+
+              <div class="form-field">
+                <label for="newPassword">新しいパスワード <span>*</span></label>
+                <input
+                  id="newPassword"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="12"
+                  required
+                >
+                <small>12文字以上を推奨</small>
+              </div>
+
+              <div class="form-field">
+                <label for="confirmPassword">新しいパスワード（確認） <span>*</span></label>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="12"
+                  required
+                >
+              </div>
+
+            </div>
+
+            <div class="form-actions">
+              <p>変更後は新しいパスワードでログインしてください。</p>
+              <button type="submit" class="primary-button">
+                UPDATE PASSWORD <span>→</span>
+              </button>
+            </div>
+
+            <p id="changePasswordMessage" class="message" aria-live="polite"></p>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <footer class="site-footer">
+        <div>
+          <strong>NIDMEGENT ESPORTS</strong>
+          <span>MEMBER DASHBOARD</span>
+        </div>
+
+        <p>PLAY WITH PASSION. NEVER GIVE UP.</p>
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <!-- モバイルナビゲーション -->
+  <nav id="mobileNav" class="mobile-nav hidden">
+
+    <button class="mobile-nav-item active" data-tab="home">
+      <span>⌂</span>
+      <small>HOME</small>
+    </button>
+
+    <button class="mobile-nav-item" data-tab="application">
+      <span>＋</span>
+      <small>APPLY</small>
+    </button>
+
+    <button class="mobile-nav-item" data-tab="premier">
+      <span>◈</span>
+      <small>PREMIER</small>
+    </button>
+
+    <button class="mobile-nav-item" data-tab="analyst">
+      <span>▥</span>
+      <small>ANALYST</small>
+    </button>
+
+    <button class="mobile-nav-item" data-tab="mypage">
+      <span>◎</span>
+      <small>MY PAGE</small>
+    </button>
+
+  </nav>
+
+
+  <!-- 通知 -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

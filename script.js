@@ -9,7 +9,7 @@
  *
  * URLが空の場合、ログイン・申請通信は行わない。
  */
-const API_URL = "";
+const API_URL = "https://script.google.com/macros/s/AKfycbwBP_jTuYq9S7gObFb27oDcbmXaxPZKcg4bR5N6CjMj2trV7D-7VWNJYWFoMW3zh9zs/exec";
 
 
 /* =====================================================

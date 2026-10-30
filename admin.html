@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090909">
   <meta name="description" content="Nidmegent Esports Admin Dashboard">
-  <title>NIDMEGENT | ADMIN PANEL</title>
+  <title>NidSight Aadmin</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
@@ -214,8 +214,18 @@
       <div class="dialog-head"><div><p class="eyebrow">ACCOUNT EDIT</p><h3>EDIT MEMBER</h3></div><button type="button" class="close-dialog" data-close="memberDialog">×</button></div>
       <input id="editMemberId" type="hidden">
       <label for="editDisplayName">DISPLAY NAME</label><input id="editDisplayName" required maxlength="100">
-      <label for="editDivision">DIVISION</label><select id="editDivision"><option>LYXEN DIV</option><option>NOXIA DIV</option><option>OTHER</option></select>
-      <label for="editRole">ROLE</label><select id="editRole"><option value="MEMBER">MEMBER</option><option value="ADMIN">ADMIN</option></select>
+      <label for="editDivision">DIVISION</label>
+      <select id="editDivision" required>
+  <option value="LYXEN Div.">LYXEN Div.</option>
+  <option value="NOXIA Div.">NOXIA Div.</option>
+  <option value="STREAMER">STREAMER</option>
+  <option value="CREATOR">CREATOR</option>
+  <option value="VALORANT">VALORANT</option>
+  <option value="R6 SIEGE">R6 SIEGE</option>
+  <option value="APEX">APEX</option>
+  <option value="OTHER">OTHER</option>
+</select>
+      
       <label for="editStatus">ACCOUNT STATUS</label><select id="editStatus"><option value="ACTIVE">ACTIVE</option><option value="SUSPENDED">SUSPENDED</option></select>
       <button class="primary" type="submit">SAVE CHANGES →</button>
     </form>
